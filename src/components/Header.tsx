@@ -13,13 +13,23 @@ import {
   ListItem,
   ListItemText,
   Badge,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTranslation } from "react-i18next";
 
 import { connectorsByName, ConnectorNames } from "utils/web3React";
-import { useEagerConnect, useInactiveListener } from "hooks/web3";
+import { useEagerConnect, useInactiveListener } from "hooks/useActiveWeb3React";
 import truncateWalletAddress from "utils/truncateWalletAddress";
+
+const link = {
+  textDecoration: "none",
+  color: "gray",
+  fontWeight: "bold",
+  "&:hover": {
+    color: "#735858",
+  },
+};
 
 const Header = () => {
   const { t } = useTranslation("");
@@ -46,7 +56,16 @@ const Header = () => {
   const Logo = () => {
     return (
       <Link href="/" underline="none">
-        <img src="/logo512.png" alt="Logo" height={30} />
+        <Grid container spacing={2} alignItems="center" alignContent="center">
+          <Grid item>
+            <img src="/logo512.png" alt="Logo" height={30} />
+          </Grid>
+          <Grid item>
+            <Typography color="textPrimary" variant="h6">
+              Nabe.Finance
+            </Typography>
+          </Grid>
+        </Grid>
       </Link>
     );
   };
@@ -60,6 +79,8 @@ const Header = () => {
         <Box sx={{ display: { md: "block", xs: "none" } }}>
           {account === undefined ? (
             <Button
+              variant="outlined"
+              sx={{ margin: (theme) => theme.spacing(0, 0, 0, 2) }}
               onClick={() => {
                 activate(
                   connectorsByName[ConnectorNames.Injected],
@@ -94,18 +115,18 @@ const Header = () => {
       <Box sx={{ display: { md: "block", xs: "none" }, marginLeft: 3 }}>
         <Grid container spacing={3}>
           <Grid item>
-            <Link href="/" underline="none">
-              {t("Swap")}
+            <Link href="/" underline="none" sx={link}>
+              {t("NabePot")}
             </Link>
           </Grid>
           <Grid item>
-            <Link href="/Liquidity" underline="none">
-              {t("Liquidity")}
+            <Link href="/MyPot" underline="none" sx={link}>
+              {t("My Pots")}
             </Link>
           </Grid>
           <Grid item>
-            <Link href="/farm" underline="none">
-              {t("Farm")}
+            <Link href="/Docs" underline="none" sx={link}>
+              {t("Docs")}
             </Link>
           </Grid>
         </Grid>
@@ -178,7 +199,7 @@ const Header = () => {
       <AppBar
         color="transparent"
         position="static"
-        elevation={0}
+        elevation={1}
         sx={{
           marginTop: (theme) => theme.spacing(1),
           marginBottom: (theme) => theme.spacing(5),
@@ -186,8 +207,8 @@ const Header = () => {
       >
         <Toolbar variant="dense">
           <Logo />
-          <SectionDesktop />
           <div style={{ flexGrow: 1 }} />
+          <SectionDesktop />
           <SectionMobile />
           <ConnectButton />
         </Toolbar>

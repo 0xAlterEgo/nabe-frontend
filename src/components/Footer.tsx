@@ -4,7 +4,6 @@ import SvgIcon from "@mui/material/SvgIcon";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import TranslationButton from "./TranslationButton";
 
 const Footer: React.FC = () => {
   return (
@@ -22,21 +21,21 @@ const Footer: React.FC = () => {
       <Grid item>
         <IconButton
           onClick={() => {
-            window.open("https://github.com/cmdswap");
+            window.open("https://github.com/nabefinance");
           }}
         >
           <GitHubIcon />
         </IconButton>
         <IconButton
           onClick={() => {
-            window.open("https://t.me/cmdswap");
+            window.open("https://t.me/NabeFinance");
           }}
         >
           <TelegramIcon />
         </IconButton>
         <IconButton
           onClick={() => {
-            window.open("https://discord.gg/X6R9Ea7peu");
+            window.open("https://discord.gg/dzAym5KDS2");
           }}
         >
           <SvgIcon>
@@ -45,13 +44,12 @@ const Footer: React.FC = () => {
         </IconButton>
         <IconButton
           onClick={() => {
-            window.open("https://twitter.com/cmdswap");
+            window.open("https://twitter.com/NabeFinance");
           }}
         >
           <TwitterIcon />
         </IconButton>
       </Grid>
-      <TranslationButton />
     </Grid>
   );
 };
