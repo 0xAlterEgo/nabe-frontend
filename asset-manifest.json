@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/nabe-frontend/static/js/main.c2434551.chunk.js",
-    "main.js.map": "/nabe-frontend/static/js/main.c2434551.chunk.js.map",
+    "main.js": "/nabe-frontend/static/js/main.bad975cf.chunk.js",
+    "main.js.map": "/nabe-frontend/static/js/main.bad975cf.chunk.js.map",
     "runtime-main.js": "/nabe-frontend/static/js/runtime-main.94020afe.js",
     "runtime-main.js.map": "/nabe-frontend/static/js/runtime-main.94020afe.js.map",
     "static/js/2.241f6457.chunk.js": "/nabe-frontend/static/js/2.241f6457.chunk.js",
@@ -19,6 +19,6 @@
   "entrypoints": [
     "static/js/runtime-main.94020afe.js",
     "static/js/3.54469774.chunk.js",
-    "static/js/main.c2434551.chunk.js"
+    "static/js/main.bad975cf.chunk.js"
   ]
 }
