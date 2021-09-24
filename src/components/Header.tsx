@@ -25,9 +25,13 @@ import truncateWalletAddress from "utils/truncateWalletAddress";
 const link = {
   textDecoration: "none",
   color: "gray",
-  fontWeight: "bold",
   "&:hover": {
     color: "#735858",
+    fontWeight: "bold",
+  },
+  "&:active": {
+    color: "#735858",
+    fontWeight: "bold",
   },
 };
 

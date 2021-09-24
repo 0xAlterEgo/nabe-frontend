@@ -1,6 +1,6 @@
 import { Web3ReactProvider } from "@web3-react/core";
 import { Provider } from "react-redux";
-import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 
@@ -8,7 +8,6 @@ import { getLibrary } from "utils/web3React";
 import store from "state";
 
 const Providers: React.FC = ({ children }) => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = createTheme(
     {
       palette: {
@@ -25,10 +24,10 @@ const Providers: React.FC = ({ children }) => {
         },
       },
       typography: {
-        fontFamily: ["Ubuntu"].join(","),
+        fontFamily: ["Ubuntu", "sans-serif"].join(","),
       },
     },
-    [prefersDarkMode]
+    []
   );
 
   return (

@@ -14,3 +14,7 @@ export interface PotState {
     potEnd: boolean;
   };
 }
+
+export interface ModalState {
+  isAmountModal: boolean;
+}
