@@ -19,7 +19,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useTranslation } from "react-i18next";
 
 import { connectorsByName, ConnectorNames } from "utils/web3React";
-import { useEagerConnect, useInactiveListener } from "hooks/useActiveWeb3React";
+import useEagerConnect from "hooks/useEagerConnect";
+import useInactiveListener from "hooks/useInactiveListener";
 import truncateWalletAddress from "utils/truncateWalletAddress";
 
 const link = {
@@ -98,6 +99,7 @@ const Header = () => {
             </Button>
           ) : (
             <Button
+              variant="outlined"
               onClick={() => {
                 deactivate();
               }}
@@ -116,7 +118,7 @@ const Header = () => {
 
   const SectionDesktop = () => {
     return (
-      <Box sx={{ display: { md: "block", xs: "none" }, marginLeft: 3 }}>
+      <Box sx={{ display: { md: "block", xs: "none" }, marginRight: 3 }}>
         <Grid container spacing={3}>
           <Grid item>
             <Link href="/" underline="none" sx={link}>
@@ -200,15 +202,7 @@ const Header = () => {
 
   return (
     <>
-      <AppBar
-        color="transparent"
-        position="static"
-        elevation={1}
-        sx={{
-          marginTop: (theme) => theme.spacing(1),
-          marginBottom: (theme) => theme.spacing(5),
-        }}
-      >
+      <AppBar color="transparent" position="static" elevation={1}>
         <Toolbar variant="dense">
           <Logo />
           <div style={{ flexGrow: 1 }} />

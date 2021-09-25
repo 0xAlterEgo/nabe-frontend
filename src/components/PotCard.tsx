@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Typography,
@@ -10,6 +10,8 @@ import {
   CardActionArea,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import moment from "moment";
+
 import { toggleAmountModal } from "state/modal";
 import AmountModal from "./AmountModal";
 
@@ -21,11 +23,23 @@ type PotCardProp = {
 };
 
 const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
+  const targetTime = moment("2035-01-01");
   const dispatch = useDispatch();
+
+  const [currentTime, setCurrentTime] = useState(moment());
+  const timeBetween = moment.duration(targetTime.diff(currentTime));
 
   const openAmountModal = () => {
     dispatch(toggleAmountModal());
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(moment());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -33,14 +47,10 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              {end ? (
-                <Typography variant="caption">ENDED</Typography>
-              ) : (
-                <Typography variant="caption">LIVE</Typography>
-              )}
+              <Typography variant="caption">NabePot</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography variant="caption">#33</Typography>
+              <Typography variant="caption">#{season}</Typography>
             </Grid>
             <Grid item xs={12}>
               <LinearProgress variant="determinate" value={30} />
@@ -49,13 +59,22 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
               <Typography variant="body2">Participants</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography>300</Typography>
+              <Typography>{participant}</Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body2">SSR Prize</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography>$1,132,512</Typography>
+              <Typography>${tvl}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body2">Next Draw</Typography>
+            </Grid>
+            <Grid item xs={6} sx={{ textAlign: "right" }}>
+              <Typography>
+                {timeBetween.hours()}h:{timeBetween.minutes()}m:
+                {timeBetween.seconds()}s
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
