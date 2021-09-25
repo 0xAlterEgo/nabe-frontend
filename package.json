@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "homepage": "https://nabe.netlify.app/",
+  "homepage": "https://nabefinance.netlify.app/",
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@emotion/react": "^11.4.1",
