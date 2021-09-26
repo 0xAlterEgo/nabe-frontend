@@ -28,7 +28,7 @@ const Banner: React.FC = () => {
         </Box>
       </Grid>
       <Grid item>
-        <img src="/logo512.png" alt="Logo" height={100} />
+        <img src="./logo512.png" alt="Logo" height={100} />
       </Grid>
     </Grid>
   );

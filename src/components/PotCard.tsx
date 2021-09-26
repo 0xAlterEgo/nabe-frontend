@@ -13,16 +13,22 @@ import { useDispatch } from "react-redux";
 import moment from "moment";
 
 import { toggleAmountModal } from "state/modal";
-import AmountModal from "./AmountModal";
 
 type PotCardProp = {
-  season?: string;
-  participant?: string;
-  tvl?: string;
+  title: string;
+  season: string;
+  participant: string;
+  tvl: string;
   end: boolean;
 };
 
-const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
+const PotCard: React.FC<PotCardProp> = ({
+  title,
+  season,
+  participant,
+  tvl,
+  end,
+}) => {
   const targetTime = moment("2035-01-01");
   const dispatch = useDispatch();
 
@@ -47,10 +53,10 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <Typography variant="caption">NabePot</Typography>
+              <Typography variant="subtitle1">{title}</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography variant="caption">#{season}</Typography>
+              <Typography variant="subtitle1">#{season}</Typography>
             </Grid>
             <Grid item xs={12}>
               <LinearProgress variant="determinate" value={30} />
@@ -72,8 +78,8 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
               <Typography>
-                {timeBetween.hours()}h:{timeBetween.minutes()}m:
-                {timeBetween.seconds()}s
+                {timeBetween.days()}d {timeBetween.hours()}h{" "}
+                {timeBetween.minutes()}m {timeBetween.seconds()}s
               </Typography>
             </Grid>
           </Grid>
@@ -81,7 +87,12 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
         <CardActionArea>
           <Tooltip title="The odds for the winner are as follows: SSR 3%, SR 7%, R 15%, N 75%">
             {end ? (
-              <Button fullWidth variant="contained" disabled>
+              <Button
+                fullWidth
+                variant="contained"
+                onClick={openAmountModal}
+                // disabled
+              >
                 ENDED POT
               </Button>
             ) : (
@@ -92,7 +103,6 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
           </Tooltip>
         </CardActionArea>
       </Card>
-      <AmountModal />
     </>
   );
 };

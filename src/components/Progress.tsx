@@ -1,21 +1,19 @@
 import React from "react";
-import { CircularProgress, Container } from "@mui/material";
+import { LinearProgress, Box } from "@mui/material";
 
 const Progress = () => {
   return (
-    <Container
+    <Box
       sx={{
         position: "absolute",
         top: "50%",
         left: "50%",
-        display: "flex",
-        "& > * + *": {
-          marginLeft: (theme) => theme.spacing(2),
-        },
+        transform: "translate(-50%,-50%)",
       }}
     >
-      <CircularProgress />
-    </Container>
+      <img src="./images/loading.png" alt="Logo" />
+      <LinearProgress />
+    </Box>
   );
 };
 

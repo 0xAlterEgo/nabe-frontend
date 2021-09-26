@@ -63,7 +63,7 @@ const Header = () => {
       <Link href="/" underline="none">
         <Grid container spacing={2} alignItems="center" alignContent="center">
           <Grid item>
-            <img src="/logo512.png" alt="Logo" height={30} />
+            <img src="./logo512.png" alt="Logo" height={30} />
           </Grid>
           <Grid item>
             <Typography color="textPrimary" variant="h6">
