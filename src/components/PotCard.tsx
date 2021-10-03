@@ -6,7 +6,7 @@ import {
   CardContent,
   Button,
   Tooltip,
-  LinearProgress,
+  Divider,
   CardActionArea,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
@@ -15,21 +15,25 @@ import moment from "moment";
 import { toggleAmountModal } from "state/modal";
 
 type PotCardProp = {
+  image: string;
   title: string;
   season: string;
   participant: string;
   tvl: string;
   end: boolean;
+  nextDraw: Date;
 };
 
 const PotCard: React.FC<PotCardProp> = ({
+  image,
   title,
   season,
   participant,
   tvl,
   end,
+  nextDraw,
 }) => {
-  const targetTime = moment("2035-01-01");
+  const targetTime = moment(nextDraw);
   const dispatch = useDispatch();
 
   const [currentTime, setCurrentTime] = useState(moment());
@@ -53,13 +57,14 @@ const PotCard: React.FC<PotCardProp> = ({
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <Typography variant="subtitle1">{title}</Typography>
+              <img src={`./images/${image}.png`} alt="Logo" height="60" />
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
               <Typography variant="subtitle1">#{season}</Typography>
+              <Typography variant="h6">{title}</Typography>
             </Grid>
             <Grid item xs={12}>
-              <LinearProgress variant="determinate" value={30} />
+              <Divider />
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body2">Participants</Typography>
@@ -87,12 +92,7 @@ const PotCard: React.FC<PotCardProp> = ({
         <CardActionArea>
           <Tooltip title="The odds for the winner are as follows: SSR 3%, SR 7%, R 15%, N 75%">
             {end ? (
-              <Button
-                fullWidth
-                variant="contained"
-                onClick={openAmountModal}
-                // disabled
-              >
+              <Button fullWidth variant="contained" disabled>
                 ENDED POT
               </Button>
             ) : (

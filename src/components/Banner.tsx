@@ -8,7 +8,7 @@ const Banner: React.FC = () => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{ marginBottom: (theme) => theme.spacing(3) }}
+      sx={{ marginBottom: (theme) => theme.spacing(5) }}
     >
       <Grid
         item
@@ -21,14 +21,11 @@ const Banner: React.FC = () => {
         }}
       >
         <Box>
-          <Typography variant="caption">TOTAL DEPOSITS</Typography>
-          <Typography variant="h6" color="primary">
+          <Typography variant="body2">TOTAL DEPOSITS</Typography>
+          <Typography variant="h3" color="primary">
             123,412$
           </Typography>
         </Box>
-      </Grid>
-      <Grid item>
-        <img src="./logo512.png" alt="Logo" height={100} />
       </Grid>
     </Grid>
   );

@@ -6,14 +6,16 @@ import "./config/lang/i18n";
 import Home from "views/Home";
 import MyPot from "views/MyPot";
 import NotFound from "views/NotFound";
+import Winner from "views/Winner";
 
 const App = () => {
   return (
-    <Router basename="/index.html">
+    <Router>
       <CssBaseline />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/mypot" component={MyPot} />
+        <Route exact path="/winner" component={Winner} />
 
         <Route path={"*"} component={NotFound} />
       </Switch>

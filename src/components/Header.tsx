@@ -127,11 +127,16 @@ const Header = () => {
           </Grid>
           <Grid item>
             <Link href="/MyPot" underline="none" sx={link}>
-              {t("My Pots")}
+              {t("MyPot")}
             </Link>
           </Grid>
+          {/* <Grid item>
+            <Link href="/Winner" underline="none" sx={link}>
+              {t("Winner")}
+            </Link>
+          </Grid> */}
           <Grid item>
-            <Link href="/Docs" underline="none" sx={link}>
+            <Link href="https://docs.nabe.finance" underline="none" sx={link}>
               {t("Docs")}
             </Link>
           </Grid>
@@ -192,7 +197,22 @@ const Header = () => {
         <List style={{ width: 250 }}>
           <Link href="/" underline="none">
             <ListItem button>
-              <ListItemText>Swap</ListItemText>
+              <ListItemText>NabePot</ListItemText>
+            </ListItem>
+          </Link>
+          <Link href="/MyPot" underline="none">
+            <ListItem button>
+              <ListItemText>MyPot</ListItemText>
+            </ListItem>
+          </Link>
+          {/* <Link href="/Winner" underline="none">
+            <ListItem button>
+              <ListItemText>Winner</ListItemText>
+            </ListItem>
+          </Link> */}
+          <Link href="https://docs.nabe.finance" underline="none">
+            <ListItem button>
+              <ListItemText>Docs</ListItemText>
             </ListItem>
           </Link>
         </List>

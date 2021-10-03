@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import Progress from "components/Progress";
 import { useAppSelector, useFetchPotData } from "state/hooks";
 import PotCard from "components/PotCard";
-import Banner from "components/Banner";
 import AmountModal from "components/AmountModal";
 import TxModal from "components/TxModal";
 
@@ -16,6 +15,7 @@ const Home = () => {
   const participant = useAppSelector((state) => state.pots.potData.participant);
   const tvl = useAppSelector((state) => state.pots.potData.tvl);
   const end = useAppSelector((state) => state.pots.potData.potEnd);
+  const nextDraw = useAppSelector((state) => state.pots.potData.nextDraw);
 
   useFetchPotData();
 
@@ -24,15 +24,27 @@ const Home = () => {
   return (
     <Layout>
       <Helmet title="Home" />
-      <Banner />
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         <Grid item>
           <PotCard
+            image="pancake"
             title="Cake Pot"
             season={season}
             participant={participant}
             tvl={tvl}
             end={end}
+            nextDraw={nextDraw}
+          />
+        </Grid>
+        <Grid item>
+          <PotCard
+            image="nabe"
+            title="Nabe Pot"
+            season={season}
+            participant={participant}
+            tvl={tvl}
+            end={end}
+            nextDraw={nextDraw}
           />
         </Grid>
       </Grid>

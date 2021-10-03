@@ -10,6 +10,7 @@ const initialState: PotState = {
     participant: "0",
     tvl: "0",
     potEnd: false,
+    nextDraw: new Date(),
   },
 };
 

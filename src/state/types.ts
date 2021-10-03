@@ -12,6 +12,7 @@ export interface PotState {
     participant: SerializedBigNumber;
     tvl: SerializedBigNumber;
     potEnd: boolean;
+    nextDraw: Date;
   };
 }
 

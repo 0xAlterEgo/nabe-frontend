@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "homepage": "https://nabefinance.github.io/nabe-frontend/",
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@emotion/react": "^11.4.1",
@@ -68,7 +67,6 @@
     "@types/react-helmet": "^6.1.2",
     "@types/react-router-dom": "^5.1.9",
     "@types/redux-logger": "^3.0.9",
-    "gh-pages": "^3.2.3",
-    "msw": "^0.35.0"
+    "gh-pages": "^3.2.3"
   }
 }
