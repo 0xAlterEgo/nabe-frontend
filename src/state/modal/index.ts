@@ -4,6 +4,7 @@ import { ModalState } from "state/types";
 
 const initialState: ModalState = {
   isAmountModal: false,
+  isTxModal: false,
 };
 
 export const modalSlice = createSlice({
@@ -13,10 +14,13 @@ export const modalSlice = createSlice({
     toggleAmountModal: (state) => {
       state.isAmountModal = !state.isAmountModal;
     },
+    toggleTxModal: (state) => {
+      state.isTxModal = !state.isTxModal;
+    },
   },
 });
 
-export const { toggleAmountModal } = modalSlice.actions;
+export const { toggleAmountModal, toggleTxModal } = modalSlice.actions;
 
 export const selectModal = (state: RootState) => state.modal;
 

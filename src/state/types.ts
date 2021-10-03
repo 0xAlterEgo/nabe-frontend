@@ -12,9 +12,11 @@ export interface PotState {
     participant: SerializedBigNumber;
     tvl: SerializedBigNumber;
     potEnd: boolean;
+    nextDraw: Date;
   };
 }
 
 export interface ModalState {
   isAmountModal: boolean;
+  isTxModal: boolean;
 }

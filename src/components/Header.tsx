@@ -19,7 +19,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useTranslation } from "react-i18next";
 
 import { connectorsByName, ConnectorNames } from "utils/web3React";
-import { useEagerConnect, useInactiveListener } from "hooks/useActiveWeb3React";
+import useEagerConnect from "hooks/useEagerConnect";
+import useInactiveListener from "hooks/useInactiveListener";
 import truncateWalletAddress from "utils/truncateWalletAddress";
 
 const link = {
@@ -62,7 +63,7 @@ const Header = () => {
       <Link href="/" underline="none">
         <Grid container spacing={2} alignItems="center" alignContent="center">
           <Grid item>
-            <img src="/logo512.png" alt="Logo" height={30} />
+            <img src="./logo512.png" alt="Logo" height={30} />
           </Grid>
           <Grid item>
             <Typography color="textPrimary" variant="h6">
@@ -98,6 +99,7 @@ const Header = () => {
             </Button>
           ) : (
             <Button
+              variant="outlined"
               onClick={() => {
                 deactivate();
               }}
@@ -116,7 +118,7 @@ const Header = () => {
 
   const SectionDesktop = () => {
     return (
-      <Box sx={{ display: { md: "block", xs: "none" }, marginLeft: 3 }}>
+      <Box sx={{ display: { md: "block", xs: "none" }, marginRight: 3 }}>
         <Grid container spacing={3}>
           <Grid item>
             <Link href="/" underline="none" sx={link}>
@@ -125,11 +127,16 @@ const Header = () => {
           </Grid>
           <Grid item>
             <Link href="/MyPot" underline="none" sx={link}>
-              {t("My Pots")}
+              {t("MyPot")}
             </Link>
           </Grid>
+          {/* <Grid item>
+            <Link href="/Winner" underline="none" sx={link}>
+              {t("Winner")}
+            </Link>
+          </Grid> */}
           <Grid item>
-            <Link href="/Docs" underline="none" sx={link}>
+            <Link href="https://docs.nabe.finance" underline="none" sx={link}>
               {t("Docs")}
             </Link>
           </Grid>
@@ -190,7 +197,22 @@ const Header = () => {
         <List style={{ width: 250 }}>
           <Link href="/" underline="none">
             <ListItem button>
-              <ListItemText>Swap</ListItemText>
+              <ListItemText>NabePot</ListItemText>
+            </ListItem>
+          </Link>
+          <Link href="/MyPot" underline="none">
+            <ListItem button>
+              <ListItemText>MyPot</ListItemText>
+            </ListItem>
+          </Link>
+          {/* <Link href="/Winner" underline="none">
+            <ListItem button>
+              <ListItemText>Winner</ListItemText>
+            </ListItem>
+          </Link> */}
+          <Link href="https://docs.nabe.finance" underline="none">
+            <ListItem button>
+              <ListItemText>Docs</ListItemText>
             </ListItem>
           </Link>
         </List>
@@ -200,15 +222,7 @@ const Header = () => {
 
   return (
     <>
-      <AppBar
-        color="transparent"
-        position="static"
-        elevation={1}
-        sx={{
-          marginTop: (theme) => theme.spacing(1),
-          marginBottom: (theme) => theme.spacing(5),
-        }}
-      >
+      <AppBar color="transparent" position="static" elevation={1}>
         <Toolbar variant="dense">
           <Logo />
           <div style={{ flexGrow: 1 }} />

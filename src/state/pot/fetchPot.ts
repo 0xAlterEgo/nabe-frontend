@@ -14,12 +14,14 @@ const fetchPot = async () => {
     );
     const tvl = utils.formatEther(await cakePotContract.totalAmounts(season));
     const end = await cakePotContract.checkEnd();
+    const nextDraw = await cakePotContract.nextTime;
     return {
       isLoading: false,
       season: season,
       participant: participant,
       tvl: tvl,
       potEnd: end,
+      nextDraw,
     };
   } catch (error) {
     return {
@@ -28,6 +30,7 @@ const fetchPot = async () => {
       participant: "0",
       tvl: "0",
       potEnd: false,
+      nextDraw: new Date(),
     };
   }
 };

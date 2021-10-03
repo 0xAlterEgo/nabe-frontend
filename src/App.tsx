@@ -4,6 +4,9 @@ import { CssBaseline } from "@mui/material";
 
 import "./config/lang/i18n";
 import Home from "views/Home";
+import MyPot from "views/MyPot";
+import NotFound from "views/NotFound";
+import Winner from "views/Winner";
 
 const App = () => {
   return (
@@ -11,6 +14,10 @@ const App = () => {
       <CssBaseline />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/mypot" component={MyPot} />
+        <Route exact path="/winner" component={Winner} />
+
+        <Route path={"*"} component={NotFound} />
       </Switch>
     </Router>
   );

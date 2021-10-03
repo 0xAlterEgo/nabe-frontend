@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Typography,
@@ -6,26 +6,50 @@ import {
   CardContent,
   Button,
   Tooltip,
-  LinearProgress,
+  Divider,
   CardActionArea,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import moment from "moment";
+
 import { toggleAmountModal } from "state/modal";
-import AmountModal from "./AmountModal";
 
 type PotCardProp = {
-  season?: string;
-  participant?: string;
-  tvl?: string;
+  image: string;
+  title: string;
+  season: string;
+  participant: string;
+  tvl: string;
   end: boolean;
+  nextDraw: Date;
 };
 
-const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
+const PotCard: React.FC<PotCardProp> = ({
+  image,
+  title,
+  season,
+  participant,
+  tvl,
+  end,
+  nextDraw,
+}) => {
+  const targetTime = moment(nextDraw);
   const dispatch = useDispatch();
+
+  const [currentTime, setCurrentTime] = useState(moment());
+  const timeBetween = moment.duration(targetTime.diff(currentTime));
 
   const openAmountModal = () => {
     dispatch(toggleAmountModal());
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(moment());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -33,29 +57,35 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              {end ? (
-                <Typography variant="caption">ENDED</Typography>
-              ) : (
-                <Typography variant="caption">LIVE</Typography>
-              )}
+              <img src={`images/${image}.png`} alt="Logo" height="60" />
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography variant="caption">#33</Typography>
+              <Typography variant="subtitle1">#{season}</Typography>
+              <Typography variant="h6">{title}</Typography>
             </Grid>
             <Grid item xs={12}>
-              <LinearProgress variant="determinate" value={30} />
+              <Divider />
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body2">Participants</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography>300</Typography>
+              <Typography>{participant}</Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body2">SSR Prize</Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography>$1,132,512</Typography>
+              <Typography>${tvl}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body2">Next Draw</Typography>
+            </Grid>
+            <Grid item xs={6} sx={{ textAlign: "right" }}>
+              <Typography>
+                {timeBetween.days()}d {timeBetween.hours()}h{" "}
+                {timeBetween.minutes()}m {timeBetween.seconds()}s
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
@@ -73,7 +103,6 @@ const PotCard: React.FC<PotCardProp> = ({ season, participant, tvl, end }) => {
           </Tooltip>
         </CardActionArea>
       </Card>
-      <AmountModal />
     </>
   );
 };
