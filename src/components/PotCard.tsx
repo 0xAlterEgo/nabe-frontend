@@ -57,7 +57,7 @@ const PotCard: React.FC<PotCardProp> = ({
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <img src={`./images/${image}.png`} alt="Logo" height="60" />
+              <img src={`images/${image}.png`} alt="Logo" height="60" />
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
               <Typography variant="subtitle1">#{season}</Typography>

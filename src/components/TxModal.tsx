@@ -19,7 +19,7 @@ const TxModal = () => {
       <Dialog open={open}>
         <DialogTitle>Transaction...</DialogTitle>
         <DialogContent>
-          <img src="./images/tx.png" alt="Logo" width="256" />
+          <img src="images/tx.png" alt="Logo" width="256" />
           <LinearProgress />
         </DialogContent>
       </Dialog>

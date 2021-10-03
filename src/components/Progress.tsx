@@ -11,7 +11,7 @@ const Progress = () => {
         transform: "translate(-50%,-50%)",
       }}
     >
-      <img src="./images/loading.png" alt="Logo" />
+      <img src="images/loading.png" alt="Logo" />
       <LinearProgress />
     </Box>
   );
